@@ -1,3 +1,74 @@
-<h2 id="title">Welcome to Ember</h2>
+<style>
+  html {
+    background-color: #fefefd;
+    color: #333;
 
-{{outlet}}
+    font-family:"Lucida Grande", "Lucida Sans Unicode", Geneva, sans-serif;
+  }
+  header {
+    text-align: center;
+  }
+
+  code {
+    background-color: #F7F7F9;
+    color: #E11257;
+  }
+
+  table {
+    width: 90%;
+    min-width: 640px;
+
+    color: #333;
+
+    margin: 0 auto;
+  }
+  th {
+    text-align: left;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #e6e6e6;
+  }
+
+  .flex {
+    display: -webkit-flex;
+    display: flex;
+  }
+  .smaller {
+    -webkit-flex: 1;
+    flex: 1;
+  }
+  .bigger {
+    -webkit-flex: 3;
+    flex: 3;
+  }
+
+</style>
+
+<header>
+  <h1 id="title">The Brain of Tombot</h1>
+
+  <p>
+    On the <a href="https://ember-community-slackin.herokuapp.com/">Ember.js Slack</a> we have a lovely and helpful bot named… Tombot.
+  </p>
+  <p>We teach it things. These are those things.</p>
+</header>
+
+<main>
+  <table>
+    <thead>
+      <tr class="flex">
+        <th class="smaller">Fact</th>
+        <th class="bigger">Meaning</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each-in model as |key value|}}
+        <tr class="flex">
+          <td class="smaller"><p>{{key}}</p></td>
+          <td class="bigger">{{md-text text=value}}</td>
+        </tr>
+      {{/each-in}}
+    </tbody>
+  </table>
+</main>
