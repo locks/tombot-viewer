@@ -43,6 +43,16 @@
     flex: 3;
   }
 
+  .filter-container {
+    justify-content: center;
+  }
+
+  .filter {
+    padding: 0.4em;
+    width: 30%;
+    margin: 1em 0 3em 0;
+  }
+
 </style>
 
 <header>
@@ -54,6 +64,11 @@
   <p>We teach it things. These are those things.</p>
 </header>
 
+<section class="filter-container flex">
+  <input type="text" class="filter" value={{filterTerm}} placeholder="Filter"
+    oninput={{action (mut filterTerm) value='currentTarget.value'}}>
+</section>
+
 <main>
   <table>
     <thead>
@@ -63,12 +78,14 @@
       </tr>
     </thead>
     <tbody>
-      {{#each-in model as |key value|}}
-        <tr class="flex">
-          <td class="smaller"><p>{{key}}</p></td>
-          <td class="bigger">{{md-text text=value}}</td>
-        </tr>
-      {{/each-in}}
+      {{#highlight-terms filterTerm}}
+        {{#each filteredModel as |item|}}
+          <tr class="flex">
+            <td class="smaller"><p>{{item.command}}</p></td>
+            <td class="bigger">{{md-text text=item.result}}</td>
+          </tr>
+        {{/each}}
+      {{/highlight-terms}}
     </tbody>
   </table>
 </main>
