@@ -82,7 +82,7 @@
         {{#each filteredModel as |item|}}
           <tr class="flex">
             <td class="smaller"><p>{{item.command}}</p></td>
-            <td class="bigger">{{md-text text=item.result}}</td>
+            <td class="bigger">{{item.result}}</td>
           </tr>
         {{/each}}
       {{/highlight-terms}}
